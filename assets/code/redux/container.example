@@ -1,0 +1,37 @@
+import React from 'react';
+import { connect } from 'react-redux';
+
+import { showModal } from './actions/modal';
+
+import Hello from './Hello';
+
+@connect(
+  // Map State To Props
+  state => ({
+    session: state.session
+  }),
+  // Map Dispatch Action To Props
+  { showModal }
+)
+class Greetings extends React.Component {
+  constructor() {
+    super();
+    this.onShowModal = this.onShowModal.bind(this);
+  }
+  onShowModal() {
+    // Dispatch with the showModal action
+    this.props.showModal('GreetingModal', {
+      name: 'Michiel',
+    });
+  }
+  render() {
+    return (
+      <div>
+        Hello, {this.props.session.name}
+        <button onClick={this.onShowModal}>Show Modal</button>
+      </div>
+    )
+  }
+}
+
+export default Greeting;

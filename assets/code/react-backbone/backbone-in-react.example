@@ -1,0 +1,20 @@
+import template from './template.jst';
+
+const TodoItem = Marionette.ItemView.extend({
+  template,
+});
+
+class TodoView extends React.Component {
+  componentDidMount() {
+    const todoItemView = new TodoItem({
+      model: new TodoModel({name: 'Get Milk'})
+    });
+    this.todoItemDiv.appendChild(todoItemView.render().el);
+  }
+
+  render() {
+    return (
+      <div ref={(div) => this.todoItemDiv = div} />
+    );
+  }
+}

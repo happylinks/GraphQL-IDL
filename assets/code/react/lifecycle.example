@@ -1,0 +1,32 @@
+import React from 'react';
+
+class Greeting extends React.Component {
+  constructor(props) {
+    // Make sure the constructor of React.Component is also ran.
+    super(props);
+
+    // Backbone: initialize
+    // Backbone: Props are the same as "options".
+
+    // Compare state to backbone computed properties, or 2-way binding.
+    // When updated, rerender will occur.
+    this.state = {
+    }
+  }
+  componentWillMount() {
+    // Backbone: onBeforeRender
+  }
+  componentDidMount() {
+    // Backbone: onRender
+  }
+  componentWillUnMount() {
+    // Marionette: onBeforeDestroy
+  }
+  render() {
+    // Compare to Backbone ejs template.
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+
+export default Greeting;
+

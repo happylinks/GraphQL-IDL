@@ -1,0 +1,18 @@
+import React from 'react';
+
+const Hello = ({ name }) => (
+  <p>Hello, {name}</p>
+);
+
+class Greetings extends React.Component {
+  render() {
+    return (
+      <div>
+        <Hello name="Michiel" />
+        <Hello name="Jorn" />
+      </div>
+    )
+  }
+}
+
+export default Greeting;
