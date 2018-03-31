@@ -1,0 +1,20 @@
+// Basic Input
+type Query {
+    users(limit: Int): [User]
+}
+
+// Input with default value
+type Query {
+    users(limit: Int = 10): [User]
+}
+
+// Input with multiple arguments
+type Query {
+    users(limit: Int, sort: String): [User]
+}
+
+// Input with multiple arguments and default values
+type Query {
+    users(limit: Int = 10, sort: String = "asc"): [User]
+}
+

@@ -1,0 +1,8 @@
+input CreateUserInput {
+    firstName: String!
+    lastName: String!
+}
+
+type Mutation {
+    createUser(input: CreateUserInput): User!
+}

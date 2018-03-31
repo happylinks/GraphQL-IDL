@@ -1,274 +1,326 @@
 // Import React
-import React from "react";
+import React from 'react';
 
 // Import Spectacle Core tags
 import {
-  Appear,
-  Deck,
-  Heading,
-  Image,
-  Link,
-  ListItem,
-  List,
-  Slide,
-  Spectacle,
-  Text
-} from "spectacle";
+    Appear,
+    Deck,
+    Heading,
+    Image,
+    Link,
+    ListItem,
+    List,
+    Slide,
+    Spectacle,
+    Text,
+    BlockQuote,
+    Quote,
+    Cite,
+    Table,
+    TableRow,
+    TableHeaderItem,
+    TableItem,
+} from 'spectacle';
 
 // Import image preloader util
-import preloader from "spectacle/lib/utils/preloader";
+import preloader from 'spectacle/lib/utils/preloader';
 
-import CodeSlide from "spectacle-code-slide";
+import CodeSlide from 'spectacle-code-slide';
 
 // Import theme
-import createTheme from "spectacle/lib/themes/default";
+import createTheme from 'spectacle/lib/themes/default';
 
 // Require CSS
-require("normalize.css");
-require("spectacle/lib/themes/default/index.css");
-
+require('normalize.css');
+require('spectacle/lib/themes/default/index.css');
 
 const images = {
-  cat: require("../assets/cat.gif"),
-  redux: require("../assets/redux.png")
+    cat: require('../assets/cat.gif'),
+    redux: require('../assets/redux.png'),
+    launchpad: require('../assets/launchpad.png'),
+    perspectives: require('../assets/perspectives.gif'),
 };
 
 preloader(images);
 
 const theme = createTheme({
-  primary: "#00AAFF"
+    primary: '#00AAFF',
 });
 
 export default class Presentation extends React.Component {
-  render() {
-    return (
-      <Spectacle theme={theme}>
-        <Deck transition={["zoom", "slide"]} transitionDuration={500}>
-          <Slide transition={["zoom"]} bgColor="primary">
-            <Heading size={1} fit caps lineHeight={1} textColor="black">
-              React, Redux &amp; Backbone
-            </Heading>
-            <Heading size={1} fit caps>
-              Basic introduction and discussion
-            </Heading>
-          </Slide>
-          <Slide transition={["slide"]} bgColor="black">
-            <Heading size={1} caps textColor="primary" textFont="primary">
-              Talking points
-            </Heading>
-            <List textColor="tertiary">
-              <Appear><ListItem>Basic React</ListItem></Appear>
-              <Appear><ListItem>Basic Redux</ListItem></Appear>
-              <Appear><ListItem>React and Backbone</ListItem></Appear>
-              <Appear><ListItem>Read more...</ListItem></Appear>
-            </List>
-          </Slide>
-          <Slide transition={["slide"]} bgColor="primary">
-            <Heading size={1} caps textColor="black" textFont="primary">
-              Basic React
-            </Heading>
-          </Slide>
-          <CodeSlide
-            transition={[]}
-            lang="js"
-            code={require("raw!../assets/code/react/component/class.example")}
-            ranges={[
-              { loc: [0, 36], title: "Basic React View" },
-              { loc: [2, 3], note: "Compare with Backbone.View.extend({" },
-              { loc: [3, 6], note: "Define the props and their types. React will warn you when wrong types are used." },
-              { loc: [8, 9], note: "Return JSX, compare with EJS templates" },
-            ]}/>
-          <CodeSlide
-            transition={[]}
-            lang="js"
-            code={require("raw!../assets/code/react/component/function.example")}
-            ranges={[
-              { loc: [0, 36], title: "Arrow Function React View" },
-              { loc: [2, 3], note: "When your component is 'dumb', use this instead of class. It's cleaner and forces you to keep components simple." },
-              { loc: [6, 9], note: "Define the props on the function." },
-            ]}/>
-          <CodeSlide
-            transition={[]}
-            lang="js"
-            code={require("raw!../assets/code/react/component/function_deconstruct.example")}
-            ranges={[
-              { loc: [0, 36], title: "Arrow Function React View" },
-              { loc: [2, 3], note: "Small trick, you can use es6 deconstructoring to directly get the object properties." },
-            ]}/>
-          <CodeSlide
-            transition={[]}
-            lang="js"
-            code={require("raw!../assets/code/react/jsx.example")}
-            ranges={[
-              { loc: [0, 36], title: "JSX" },
-              { loc: [4, 5], note: "You can define a style object, provide a basic string, or use a variable as attribute." },
-              { loc: [5, 7], note: "Within {} you can execute normal javascript." },
-              { loc: [7, 12], note: "Use .map to loop through a list. Set unique 'key' for children." },
-              { loc: [13, 18], note: "Use ternary operators to create if-statements. This is the recommended practice. Too bad John!" },
-              { loc: [19, 22], note: "No else statement? Just use null." },
-            ]}/>
-          <CodeSlide
-            transition={[]}
-            lang="js"
-            code={require("raw!../assets/code/react/props.example")}
-            ranges={[
-              { loc: [0, 36], title: "Props" },
-              { loc: [2, 5], note: "We have our dumb component." },
-              { loc: [10, 12], note: "Include it with the prop 'name'. You can compare this to Backbone 'options' object." },
-            ]}/>
-          <CodeSlide
-            transition={[]}
-            lang="js"
-            code={require("raw!../assets/code/react/state.example")}
-            ranges={[
-              { loc: [0, 0], title: "State" },
-              { loc: [7, 13], note: "Set the initial state in the constructor." },
-              { loc: [17, 27] },
-              { loc: [30, 33] },
-            ]}/>
-          <CodeSlide
-            transition={[]}
-            lang="js"
-            code={require("raw!../assets/code/react/lifecycle.example")}
-            ranges={[
-              { loc: [0, 0], title: "View Lifecycle" },
-              { loc: [3, 15] },
-              { loc: [15, 24] },
-              { loc: [24, 28] },
-            ]}/>
-          <Slide transition={["slide"]} bgColor="black">
-            <Heading size={1} caps textColor="primary" textFont="primary">
-              Questions about React?
-            </Heading>
-          </Slide>
-          <Slide transition={["slide"]} bgColor="primary">
-            <Heading size={1} caps textColor="black" textFont="primary">
-              Basic Redux
-            </Heading>
-            <Image src={images.redux.replace("/", "")} height="400px" />
-          </Slide>
-          <CodeSlide
-            transition={[]}
-            lang="js"
-            code={require("raw!../assets/code/redux/action.example")}
-            ranges={[
-              { loc: [0, 0], title: "Actions" },
-              { loc: [0, 2], note: "Create constants for your action names." },
-              { loc: [3, 12], note: "Create a function that returns your action as an object." },
-              { loc: [13, 21] },
-            ]}/>
-          <Slide transition={["slide"]} bgColor="primary">
-            <Heading size={3} caps textColor="white" textFont="primary">
-              Actions are "dispatched". This means that the action is send to all reducers.
-            </Heading>
-          </Slide>
-          <CodeSlide
-            transition={[]}
-            lang="js"
-            code={require("raw!../assets/code/redux/reducer.example")}
-            ranges={[
-              { loc: [0, 0], title: "Reducers" },
-              { loc: [0, 4], note: "Reducers use the action constants to check if they should respond to an action." },
-              { loc: [5, 9], note: "You can set the initial state of the reducer." },
-              { loc: [10, 11], note: "A reducer decides the data in a part of the global state object. In this case the 'modal' property." },
-              { loc: [10, 11], note: "Every time any action is dispatched, every reducer-function will fire." },
-              { loc: [11, 17], note: "A reducer checks if the action is one of its own action types and mutates its part of the global state." },
-              { loc: [18, 23] },
-            ]}/>
-          <CodeSlide
-            transition={[]}
-            lang="js"
-            code={require("raw!../assets/code/redux/store.example")}
-            ranges={[
-              { loc: [0, 0], title: "Store" },
-              { loc: [2, 6], note: "Import all reducers." },
-              { loc: [7, 13], note: "Create the global store with all reducers." },
-            ]}/>
-          <Slide transition={["slide"]} bgColor="primary">
-            <Heading size={3} caps textColor="white" textFont="primary">
-              Redux Store consists of Reducers. These Reducers update the Store using dispatched Actions.
-            </Heading>
-          </Slide>
-          <CodeSlide
-            transition={[]}
-            lang="js"
-            code={require("raw!../assets/code/redux/container.example")}
-            ranges={[
-              { loc: [0, 0], title: "State & UI" },
-              { loc: [7, 15], note: "Connect this component to the global store." },
-              { loc: [9, 12], note: "Put the 'session' object in the global store in this.props.session." },
-              { loc: [13, 14], note: "Create a dispatch-function for the showModal action, put it in this.props.showModal." },
-              { loc: [20, 26], note: "Call the showModal function to dispatch the action." },
-              { loc: [26, 34], note: "Show data from global state, create button to show modal." },
-            ]}/>
-          <Slide transition={["slide"]} bgColor="primary">
-            <Heading size={3} caps textColor="white" textFont="primary">
-              Connect React Components to the global Store with @connect. Component rerenders when Store is changed.
-            </Heading>
-          </Slide>
-          <Slide transition={["slide"]} bgColor="primary">
-            <Heading size={1} caps textColor="black" textFont="primary">
-              React and Backbone
-            </Heading>
-          </Slide>
-          <CodeSlide
-            transition={[]}
-            lang="js"
-            code={require("raw!../assets/code/react-backbone/react-in-backbone.example")}
-            ranges={[
-              { loc: [0, 0], title: "React in Backbone :)" },
-              { loc: [2, 5], note: "Beautiful React View." },
-              { loc: [6, 25], note: "Beautiful Backbone View." },
-              { loc: [6, 25] },
-            ]}/>
-          <Slide transition={["slide"]} bgColor="primary">
-            <Heading size={3} caps textColor="white" textFont="primary">
-              Start building your views in React on top of your old Backbone views!
-              Keep components re-usable for later, when you want to go all-in React.
-            </Heading>
-          </Slide>
-          <CodeSlide
-            transition={[]}
-            lang="js"
-            code={require("raw!../assets/code/react-backbone/backbone-in-react.example")}
-            ranges={[
-              { loc: [0, 0], title: "Backbone in React :(" },
-              { loc: [2, 5], note: "Beautiful Backbone View." },
-              { loc: [14, 19], note: "Create div with a reference on the component." },
-              { loc: [7, 13], note: "Create new backbone view and attach it to the div" },
-            ]}/>
-          <Slide transition={["slide"]} bgColor="primary">
-            <Heading size={3} caps textColor="white" textFont="primary">
-              Attaching Backbone Views in React is hard and kinda ugly. Would not suggest.
-            </Heading>
-          </Slide>
-          <Slide transition={["slide"]} bgColor="primary">
-            <Heading size={2} caps textColor="white" textFont="primary">
-              Read more
-            </Heading>
-            <Text textSize="1.5em" margin="20px" bold>
-              React, Redux and all plugins are updated each day. Read as much tutorials, guides and twitter feeds as you can.
-            </Text>
-            <Heading size={5} caps textColor="white" textFont="primary">
-              Homework:
-            </Heading>
-            <List textColor="white">
-              <Link textColor="white" href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.6nr8e2ilh"><ListItem>Smart vs Dumb Components</ListItem></Link>
-              <Link textColor="white" href="https://github.com/yelouafi/redux-saga"><ListItem>Redux Saga (API calls done right)</ListItem></Link>
-              <Link textColor="white" href="https://github.com/ReactTraining/react-router"><ListItem>React Router (The Router for React)</ListItem></Link>
-              <Link textColor="white" href="https://github.com/gaearon/react-hot-loader"><ListItem>React Hot Loader (Fast development)</ListItem></Link>
-              <Link textColor="white" href="https://facebook.github.io/draft-js/"><ListItem>Draft.JS (Awesome wysiwyg in React)</ListItem></Link>
-              <Link textColor="white" href="https://twitter.com/dan_abramov"><ListItem>Twitter of Dan Abramov (Redux Creator)</ListItem></Link>
-            </List>
-          </Slide>
-          <Slide transition={["spin", "slide"]} bgColor="tertiary">
-            <Heading size={6} caps fit lineHeight={1.5} textColor="black">
-              Made with ❤️ by Birdy &amp; Label A
-            </Heading>
-            <Image width="100%" src={images.cat}/>
-          </Slide>
-        </Deck>
-      </Spectacle>
-    );
-  }
+    render() {
+        return (
+            <Spectacle theme={theme}>
+                <Deck transition={['zoom', 'slide']} transitionDuration={500}>
+                    <Slide transition={['zoom']} bgColor="primary">
+                        <Heading size={1} fit lineHeight={1} textColor="black">
+                            GraphQL SDL
+                        </Heading>
+                        <Heading size={1} fit caps>
+                            Basic introduction and discussion
+                        </Heading>
+                    </Slide>
+                    <Slide transition={['slide']} bgColor="black">
+                        <Heading size={1} textColor="primary" textFont="primary">
+                            Talking points
+                        </Heading>
+                        <List textColor="tertiary">
+                            <Appear><ListItem>What is GraphQL again?</ListItem></Appear>
+                            <Appear><ListItem>What does SDL mean?</ListItem></Appear>
+                            <Appear><ListItem>Communication is key</ListItem></Appear>
+                            <Appear><ListItem>What does it look like?</ListItem></Appear>
+                            <Appear><ListItem>Meet the fam</ListItem></Appear>
+                            <Appear><ListItem>Examples</ListItem></Appear>
+                            <Appear><ListItem>Let's build a feature!</ListItem></Appear>
+                            <Appear><ListItem>Read more...</ListItem></Appear>
+                        </List>
+                    </Slide>
+                    <Slide transition={['slide']} bgColor="primary">
+                        <Heading size={2} textColor="black" textFont="primary">
+                            What is GraphQL again?
+                        </Heading>
+                        <List textColor="tertiary">
+                            <Appear><ListItem>Data query language developed by Facebook</ListItem></Appear>
+                            <Appear><ListItem>Alternative to REST</ListItem></Appear>
+                            <Appear><ListItem>More freedom for frontenders</ListItem></Appear>
+                            <Appear><ListItem>Automatically documented API's</ListItem></Appear>
+                        </List>
+                    </Slide>
+                    <Slide transition={['slide']} bgColor="black">
+                        <Heading size={4} textColor="primary" textFont="primary">
+                            What does SDL mean?
+                        </Heading>
+                        <Heading size={6} textColor="white">
+                            Schema Definition Language
+                        </Heading>
+                        <Text textColor="white" size="8" margin="40px">
+                            GraphQL SDL is a shorthand notation to express the basic shape of your GraphQL Schema and
+                            its type system.
+                        </Text>
+                    </Slide>
+                    <Slide transition={['slide']} bgColor="white">
+                        <Heading size={4} textColor="primary" textFont="primary">
+                            Communication is key!
+                        </Heading>
+                        <Text textColor="black" size="8" margin="40px">
+                            GraphQL is for front- &aacute;nd backenders. Help eachother out!
+                        </Text>
+                        <Image width="100%" src={images.perspectives} />
+                    </Slide>
+
+                    <CodeSlide
+                        transition={[]}
+                        lang="graphql"
+                        code={require('raw!../assets/code/basic.example')}
+                        ranges={[
+                            { loc: [0, 36], title: 'What does it look like?' },
+                            {
+                                loc: [0, 5],
+                                note: 'Define your schema. GraphQL has Queries, Mutations and Subscriptions',
+                            },
+                            { loc: [6, 11], note: 'Define the Types your API wants to expose.' },
+                            { loc: [12, 15], note: 'Define the Queries your API has.' },
+                        ]}
+                    />
+                    <Slide transition={['slide']} bgColor="white">
+                        <Heading size={5} caps textColor="primary" textFont="primary">
+                            Meet the fam
+                        </Heading>
+                        <Heading size={6} textColor="black">
+                            Schema
+                        </Heading>
+                        <Table textSize={8} style={{ marginTop: '40px' }}>
+                            <TableRow>
+                                <TableItem><code>schema</code></TableItem>
+                                <TableItem>GraphQL schema definition</TableItem>
+                            </TableRow>
+                            <TableRow>
+                                <TableItem><code>query</code></TableItem>
+                                <TableItem>A read-only fetch operation</TableItem>
+                            </TableRow>
+                            <TableRow>
+                                <TableItem><code>mutation</code></TableItem>
+                                <TableItem>A write followed by fetch operation</TableItem>
+                            </TableRow>
+                            <TableRow>
+                                <TableItem><code>subscription</code></TableItem>
+                                <TableItem>A subscription operation</TableItem>
+                            </TableRow>
+                        </Table>
+                    </Slide>
+                    <Slide transition={['slide']} bgColor="white">
+                        <Heading size={5} caps textColor="primary" textFont="primary">
+                            Meet the fam
+                        </Heading>
+                        <Heading size={6} textColor="black">
+                            Built-in Scalar Types
+                        </Heading>
+                        <Table textSize={8} style={{ marginTop: '40px' }}>
+                            <TableRow>
+                                <TableItem><code>Int</code></TableItem>
+                            </TableRow>
+                            <TableRow>
+                                <TableItem><code>Float</code></TableItem>
+                            </TableRow>
+                            <TableRow>
+                                <TableItem><code>String</code></TableItem>
+                            </TableRow>
+                            <TableRow>
+                                <TableItem><code>Boolean</code></TableItem>
+                            </TableRow>
+                            <TableRow>
+                                <TableItem><code>ID</code></TableItem>
+                            </TableRow>
+                        </Table>
+                    </Slide>
+                    <Slide transition={['slide']} bgColor="white">
+                        <Heading size={5} caps textColor="primary" textFont="primary">
+                            Meet the fam
+                        </Heading>
+                        <Heading size={6} textColor="black">
+                            Type Definitions
+                        </Heading>
+                        <Table textSize={8} style={{ marginTop: '40px' }}>
+                            <TableRow>
+                                <TableItem><code>scalar</code></TableItem>
+                                <TableItem>Scalar Type</TableItem>
+                            </TableRow>
+                            <TableRow>
+                                <TableItem><code>type</code></TableItem>
+                                <TableItem>Object Type</TableItem>
+                            </TableRow>
+                            <TableRow>
+                                <TableItem><code>interface</code></TableItem>
+                                <TableItem>Interface Type</TableItem>
+                            </TableRow>
+                            <TableRow>
+                                <TableItem><code>union</code></TableItem>
+                                <TableItem>Union Type</TableItem>
+                            </TableRow>
+                            <TableRow>
+                                <TableItem><code>enum</code></TableItem>
+                                <TableItem>Enum Type</TableItem>
+                            </TableRow>
+                            <TableRow>
+                                <TableItem><code>input</code></TableItem>
+                                <TableItem>Input Object Type</TableItem>
+                            </TableRow>
+                        </Table>
+                    </Slide>
+                    <Slide transition={['slide']} bgColor="white">
+                        <Heading size={5} caps textColor="primary" textFont="primary">
+                            Meet the fam
+                        </Heading>
+                        <Heading size={6} textColor="black">
+                            Type Modifiers
+                        </Heading>
+                        <Table textSize={8} style={{ marginTop: '40px' }}>
+                            <TableRow>
+                                <TableItem><code>String</code></TableItem>
+                                <TableItem>Nullable String</TableItem>
+                            </TableRow>
+                            <TableRow>
+                                <TableItem><code>String!</code></TableItem>
+                                <TableItem>Non-null String</TableItem>
+                            </TableRow>
+                            <TableRow>
+                                <TableItem><code>[String]</code></TableItem>
+                                <TableItem>List of nullable Strings</TableItem>
+                            </TableRow>
+                            <TableRow>
+                                <TableItem><code>[String]!</code></TableItem>
+                                <TableItem>Non-null list of nullable Strings</TableItem>
+                            </TableRow>
+                            <TableRow>
+                                <TableItem><code>[String!]!</code></TableItem>
+                                <TableItem>Non-null list of non-null Strings</TableItem>
+                            </TableRow>
+                        </Table>
+                    </Slide>
+                    <Slide transition={['slide']} bgColor="primary">
+                        <Heading size={2} textColor="black" textFont="primary">
+                            Examples
+                        </Heading>
+                        <List textColor="tertiary">
+                            <Appear><ListItem>Input Arguments</ListItem></Appear>
+                            <Appear><ListItem>Input Types</ListItem></Appear>
+                            <Appear><ListItem>Custom Scalars</ListItem></Appear>
+                            <Appear><ListItem>Interfaces</ListItem></Appear>
+                            <Appear><ListItem>Unions</ListItem></Appear>
+                        </List>
+                    </Slide>
+                    <CodeSlide
+                        transition={[]}
+                        lang="graphql"
+                        code={require('raw!../assets/code/input-arguments.example')}
+                        ranges={[
+                            { loc: [0, 36], title: 'Input Arguments' },
+                            { loc: [0, 4] },
+                            { loc: [5, 9] },
+                            { loc: [10, 14] },
+                            { loc: [15, 19] },
+                        ]}
+                    />
+                    <CodeSlide
+                        transition={[]}
+                        lang="graphql"
+                        code={require('raw!../assets/code/input-types.example')}
+                        ranges={[
+                            { loc: [0, 9], title: 'Input Types' },
+                            { loc: [0, 4], note: 'Input data for a new user.' },
+                            { loc: [5, 8], note: 'The mutation to attach the input to.' },
+                        ]}
+                    />
+                    <CodeSlide
+                        transition={[]}
+                        lang="graphql"
+                        code={require('raw!../assets/code/custom-scalars.example')}
+                        ranges={[
+                            { loc: [0, 7], title: 'Custom Scalars' },
+                            { loc: [0, 1], note: 'Define the scalar.' },
+                            { loc: [2, 6], note: 'Use it in your types.' },
+                        ]}
+                    />
+                    <CodeSlide
+                        transition={[]}
+                        lang="graphql"
+                        code={require('raw!../assets/code/interfaces.example')}
+                        ranges={[
+                            { loc: [0, 24], title: 'Interfaces' },
+                            { loc: [0, 9], note: 'Define your interfaces.' },
+                            { loc: [10, 24], note: 'Use them in your types.' },
+                        ]}
+                    />
+                    <CodeSlide
+                        transition={[]}
+                        lang="graphql"
+                        code={require('raw!../assets/code/unions.example')}
+                        ranges={[
+                            { loc: [0, 20], title: 'Unions' },
+                            { loc: [0, 2], note: 'Combine types into a union.' },
+                            { loc: [3, 20], note: 'Use inline fragments to spread the data.' },
+                        ]}
+                    />
+                    <Slide transition={['spin', 'slide']} bgColor="tertiary">
+                        <Heading size={6} caps fit lineHeight={1.5} textColor="black">
+                            Let's build a feature!
+                        </Heading>
+                        <Image width="100%" src={images.launchpad} />
+                    </Slide>
+                    <Slide transition={['slide']} bgColor="primary">
+                        <Heading size={2} textColor="black" textFont="primary">
+                            Read more
+                        </Heading>
+                        <List textColor="tertiary">
+                            <ListItem>GraphQL Schema - http://graphql.org/learn/schema</ListItem>
+                            <ListItem>GQLint - https://github.com/happylinks/gqlint</ListItem>
+                            <ListItem>
+                                Bynder Schema - https://github.com/Bynder/bynder-web/blob/master/schema/schema.gql
+                            </ListItem>
+                        </List>
+                    </Slide>
+                </Deck>
+            </Spectacle>
+        );
+    }
 }

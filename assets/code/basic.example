@@ -1,0 +1,16 @@
+schema {
+    query: GraphQLQuery
+    mutation: GraphQLMutation
+    subscription: GraphQLSubscription
+}
+
+type User {
+    id: ID!
+    firstName: String
+    lastName: String
+}
+
+type GraphQLQuery {
+    user(id: ID!): User
+}
+

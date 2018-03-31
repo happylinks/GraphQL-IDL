@@ -1,0 +1,20 @@
+// SDL
+union SearchResult = Human | Droid | Starship
+
+// Query
+{
+  search(text: "an") {
+    ... on Human {
+      name
+      height
+    }
+    ... on Droid {
+      name
+      primaryFunction
+    }
+    ... on Starship {
+      name
+      length
+    }
+  }
+}

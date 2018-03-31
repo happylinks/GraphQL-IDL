@@ -1,0 +1,24 @@
+interface BasicUserInfo {
+    firstName: String
+    lastName: String
+}
+
+interface BasicAddressInfo {
+    streetNumber: String
+    streetName: String
+}
+
+type User implements BasicUserInfo, BasicAddressInfo {
+    firstName: String
+    lastName: String
+    streetNumber: String
+    streetName: String
+}
+
+type SuperHero implements User {
+    firstName: String
+    lastName: String
+    address: String
+    streetNumber: String
+    streetName: String
+}
